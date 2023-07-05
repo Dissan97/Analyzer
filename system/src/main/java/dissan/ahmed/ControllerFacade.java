@@ -5,7 +5,7 @@ import dissan.ahmed.api.Analyzer;
 import dissan.ahmed.api.DataBean;
 import dissan.ahmed.bce.DataDao;
 import dissan.ahmed.bce.DataRow;
-import dissan.ahmed.bce.lr.LogisticRegressionController;
+import dissan.ahmed.bce.models.lr.LogisticRegressionController;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

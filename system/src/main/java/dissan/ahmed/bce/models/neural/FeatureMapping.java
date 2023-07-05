@@ -1,4 +1,4 @@
-package dissan.ahmed.bce.neural;
+package dissan.ahmed.bce.models.neural;
 
 import dissan.ahmed.bce.DataRow;
 import dissan.ahmed.bce.FeatureData;

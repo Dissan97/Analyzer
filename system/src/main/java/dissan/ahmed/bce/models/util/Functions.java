@@ -1,4 +1,4 @@
-package dissan.ahmed.bce.util;
+package dissan.ahmed.bce.models.util;
 
 import org.apache.commons.math.linear.RealMatrix;
 import org.jetbrains.annotations.Contract;

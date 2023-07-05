@@ -8,6 +8,6 @@ module system {
     exports dissan.ahmed.api;
     exports dissan.ahmed;
     opens dissan.ahmed.bce to junit;
-    opens dissan.ahmed.bce.neural to junit;
+    opens dissan.ahmed.bce.models.neural to junit;
 
 }

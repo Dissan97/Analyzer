@@ -15,5 +15,6 @@ public class Main {
 
     private static void ciao(Map<String, String> map){
         map.put("hello", "giao");
+        System.out.println("Hello world");
     }
 }

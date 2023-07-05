@@ -1,4 +1,4 @@
-package dissan.ahmed.bce.util;
+package dissan.ahmed.bce.models.util;
 
 public class ArffUtil {
 

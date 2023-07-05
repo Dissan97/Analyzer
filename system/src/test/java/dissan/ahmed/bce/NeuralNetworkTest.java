@@ -1,7 +1,7 @@
 package dissan.ahmed.bce;
 
-import dissan.ahmed.bce.neural.NeuralNetwork;
-import dissan.ahmed.bce.neural.NeuralNode;
+import dissan.ahmed.bce.models.neural.NeuralNetwork;
+import dissan.ahmed.bce.models.neural.NeuralNode;
 import org.junit.Test;
 
 import java.util.Random;
@@ -29,8 +29,8 @@ public class NeuralNetworkTest {
         int[] hNodes = {2, 3};
         int oNodes = 1;
         neuralNetwork = new NeuralNetwork(seed, iNodes, hNodes, oNodes);
-        input = neuralNetwork.getInnerNode();
-        hidden = neuralNetwork.getHiddenNode();
+        input = neuralNetwork.getInputNode();
+        hidden = neuralNetwork.getHiddenNodes();
         output = neuralNetwork.getOuterNode();
 
         boolean hiddenControl = true;

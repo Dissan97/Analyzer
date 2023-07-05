@@ -1,7 +1,7 @@
 package dissan.ahmed.bce;
 
-import dissan.ahmed.bce.util.ArffUtil;
-import dissan.ahmed.bce.util.DataUtil;
+import dissan.ahmed.bce.models.util.ArffUtil;
+import dissan.ahmed.bce.models.util.DataUtil;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

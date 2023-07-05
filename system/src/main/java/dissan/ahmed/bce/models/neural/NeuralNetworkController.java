@@ -1,13 +1,12 @@
-package dissan.ahmed.bce.neural;
+package dissan.ahmed.bce.models.neural;
 
-import dissan.ahmed.bce.BadMapException;
-import dissan.ahmed.bce.DataBean;
-import dissan.ahmed.bce.DataDao;
-import dissan.ahmed.bce.DataRow;
+import dissan.ahmed.bce.*;
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.RealMatrix;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -17,28 +16,54 @@ public class NeuralNetworkController implements dissan.ahmed.api.Analyzer {
     private List<DataRow> dataList;
     private final List<DataBean> beanList;
     private NeuralNetwork neuralNetwork;
+    private long seed;
 
-    public NeuralNetworkController(String dataset) throws IOException {
+
+    public NeuralNetworkController(long seed, String dataset) throws IOException {
+        this.seed = seed;
         this.dataDao = new DataDao();
         this.dataDao.setDataset(dataset);
         this.beanList = new ArrayList<>();
         setupData();
     }
 
+    public NeuralNetworkController(String dataset) throws IOException {
+        this(System.nanoTime(), dataset);
+    }
+
     private void setupData() throws IOException {
         this.dataList = this.dataDao.getAllData();
-        for (DataRow dta:
+        for (DataRow dtr:
              this.dataList) {
-            beanList.add(new DataBean(dta));
+            beanList.add(new DataBean(dtr));
         }
+
+        DataRow dtr = this.dataList.get(0);
+        //network creation
+        int input = 0;
+        int output = 0;
+
+        for (FeatureData fd:
+                dtr.getDataColumns()) {
+            if (fd.isLabel()){
+                output++;
+            }else {
+                input ++;
+            }
+        }
+        int[] hidden = {3, 4};
+        this.neuralNetwork = new NeuralNetwork(seed, input, hidden, output);
     }
 
 
     //todo adjust this give it a sense
     @Override
     public void analyze() {
-
-
+        int i = 0;
+        for (DataRow dr:
+             this.dataList) {
+            neuralNetwork.train(dr);
+        }
     }
 
     public void exitCalculator() throws BadMapException {
@@ -83,5 +108,8 @@ public class NeuralNetworkController implements dissan.ahmed.api.Analyzer {
     }
 
     public static void main(String[] args) throws IOException {
+        long seed = 1234;
+        NeuralNetworkController controller = new NeuralNetworkController(seed, "adult.csv");
+        controller.analyze();
     }
 }

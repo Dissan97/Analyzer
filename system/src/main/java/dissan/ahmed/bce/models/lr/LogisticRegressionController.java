@@ -1,4 +1,4 @@
-package dissan.ahmed.bce.lr;
+package dissan.ahmed.bce.models.lr;
 
 import dissan.ahmed.api.Analyzer;
 import dissan.ahmed.api.DataBean;

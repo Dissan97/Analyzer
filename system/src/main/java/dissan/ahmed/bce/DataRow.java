@@ -1,5 +1,10 @@
 package dissan.ahmed.bce;
 
+import org.apache.commons.math.linear.ArrayRealVector;
+import org.apache.commons.math.linear.RealVector;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataRow {
@@ -27,4 +32,17 @@ public class DataRow {
         }
         return 0;
     }
+
+    public double[] getLabelsVal() {
+        List<Double> doubles = new ArrayList<>();
+        for (FeatureData fd:
+             dataColumns) {
+            if (fd.isLabel()){
+                doubles.add((double) fd.getValue());
+            }
+        }
+        return doubles.stream().mapToDouble(Double::doubleValue).toArray();
+    }
+
+
 }
